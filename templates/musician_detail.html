@@ -4,56 +4,55 @@
 {% block title %}{{ musician.first_name }} {{ musician.last_name }} | RiffMates{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="card shadow-lg border-0">
+<div class="container mt-4">
+    <div class="card border-0 bg-transparent">
         <!-- Header Section -->
-        <div class="bg-dark text-white text-center py-5 position-relative">
-            <h1 class="display-4 fw-bold mb-3">
-                {{ musician.first_name }} <span class="text-success">{{ musician.last_name }}</span>
+        <div class="text-center py-4">
+            <h1 class="display-5 fw-light mb-2">
+                {{ musician.first_name }} 
+                <span class="fw-normal text-success">{{ musician.last_name }}</span>
             </h1>
-            <div class="badge rounded-pill bg-success text-dark px-3 py-2 shadow-sm">
-                <i class="bi bi-balloon me-2"></i>
+            <div class="text-muted">
+                <i class="bi bi-calendar2-event me-1 text-success"></i>
                 Born {{ musician.birth|date:"F j, Y" }}
             </div>
         </div>
 
-        <!-- Main Body -->
-        <div class="card-body">
-            <div class="row g-5">
+        <!-- Main Content -->
+        <div class="card-body px-0">
+            <div class="row justify-content-center">
                 <!-- Left Column -->
-                <div class="col-lg-8">
-                    <div class="mb-4">
-                        <div class="bg-dark text-white d-inline-block px-4 py-2 rounded shadow-sm">
-                            <i class="bi bi-clock-history me-2"></i>
-                            {{ musician.first_name }} is {{ musician.birth|timesince }} old
-                        </div>
+                <div class="col-lg-7">
+                    <div class="d-flex align-items-center mb-4 text-success">
+                        <i class="bi bi-clock-history me-2 fs-5"></i>
+                        <span class="fw-medium">{{ musician.first_name }} is {{ musician.birth|timesince }} old</span>
                     </div>
 
-                    <h3 class="mb-3 border-bottom pb-2">
-                        <i class="bi bi-journal-text me-2 text-primary"></i>
+                    <h3 class="h5 fw-normal mb-3 text-success">
                         Biography
                     </h3>
-                    <p class="fst-italic text-muted lead">
-                        "{{ musician.bio|default:"A talented musician whose story is yet to be written..." }}"
+                    <p class="text-secondary lh-lg">
+                        {{ musician.bio|default:"A talented musician whose story is yet to be written..." }}
                     </p>
                 </div>
 
-                <!-- Right Column (Sidebar) -->
-                <div class="col-lg-4 text-center">
+                <!-- Right Column -->
+                <div class="col-lg-4 text-center mt-lg-0 mt-4">
                     <div class="mb-4">
-                        <div class="rounded-circle bg-light d-flex justify-content-center align-items-center mx-auto" style="width: 200px; height: 200px;">
-                            <i class="bi bi-person-gear text-secondary" style="font-size: 6rem;"></i>
+                        <div class="rounded-circle bg-success bg-opacity-10 p-4 mx-auto"
+                             style="width: 160px; height: 160px;">
+                            <i class="bi bi-person-gear text-success" style="font-size: 4rem;"></i>
                         </div>
                     </div>
 
-                    <div class="d-grid gap-3">
-                        <a href="{% url 'bands' %}" class="btn btn-outline-dark btn-lg py-2">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'band_list' %}" class="btn btn-success btn-sm py-2">
                             <i class="bi bi-people me-2"></i>
-                            View All Bands
+                            View Bands
                         </a>
-                        <a href="#" class="btn btn-success btn-lg py-2">
+                        <a href="#" class="btn btn-outline-success btn-sm py-2">
                             <i class="bi bi-mic me-2"></i>
-                            View Performances
+                            Performances
                         </a>
                     </div>
                 </div>
@@ -61,4 +60,18 @@
         </div>
     </div>
 </div>
+
+<style>
+    .card {
+        background: linear-gradient(to bottom right, #f8f9fa 50%, #f0faf0 100%);
+    }
+    .btn-success {
+        background: #2a6f2a;
+        border-color: #2a6f2a;
+    }
+    .btn-outline-success {
+        border-color: #2a6f2a;
+        color: #2a6f2a;
+    }
+</style>
 {% endblock %}
